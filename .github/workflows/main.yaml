@@ -64,4 +64,6 @@ jobs:
             echo "Command executed sucessfully"
           else
             echo "Command failed"
+            echo "Error: $status"
+            exit 1
           fi

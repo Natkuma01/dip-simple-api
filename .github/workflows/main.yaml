@@ -63,7 +63,7 @@ jobs:
           --instance-id ${{ secrets.INSTANCE_ID_1 }} || true
       - name: Check Command Status
         run: |
-          status=$(aws ssm list-commands --command-id $command_id --query "Commands[0].StatusDetails" --output text)
+          status=$(aws ssm list-commands --command-id ${{ env.$command_id }} --query "Commands[0].StatusDetails" --output text)
 
           if [ $status == "Success" ]; then
             echo "Command executed sucessfully"

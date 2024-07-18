@@ -59,11 +59,11 @@ jobs:
         run: |
           echo ${{ env.command_id }}
           aws ssm wait command-executed \
-          --command-id $command_id \
+          --command-id ${{ env.command_id }} \
           --instance-id ${{ secrets.INSTANCE_ID_1 }} || true
       - name: Check Command Status
         run: |
-          status=$(aws ssm list-commands --command-id ${{ env.$command_id }} --query "Commands[0].StatusDetails" --output text)
+          status=$(aws ssm list-commands --command-id ${{ env.command_id }} --query "Commands[0].StatusDetails" --output text)
 
           if [ $status == "Success" ]; then
             echo "YAY! We did it"

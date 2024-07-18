@@ -66,8 +66,8 @@ jobs:
           status=$(aws ssm list-commands --command-id ${{ env.$command_id }} --query "Commands[0].StatusDetails" --output text)
 
           if [ $status == "Success" ]; then
-            echo "Command executed sucessfully"
+            echo "YAY! We did it"
           else
-            echo "Command failed - start debug"
+            echo "Command failed - You need to practice Leetcode and practice coding"
             exit 1
           fi
